@@ -3,12 +3,12 @@ REST API built on YII 2 Advanced Framework
 
 ##API Resources
 
-**GET /api/v1/loans**
-**GET /api/v1/loans/:id**
-**GET /api/v1/loans/:id/borrower**
-**POST /api/v1/loans**
-**PATCH /api/v1/loans/1**
-**DELETE /api/v1/loans/2**
+*GET /api/v1/loans
+*GET /api/v1/loans/:id
+*GET /api/v1/loans/:id/borrower
+*POST /api/v1/loans
+*PATCH /api/v1/loans/1
+*DELETE /api/v1/loans/2
 
 ###Example: http://localhost/loans_api/api/web/v1/loans
 
