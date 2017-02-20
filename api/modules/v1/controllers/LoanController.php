@@ -6,9 +6,8 @@ use yii\rest\ActiveController;
 use yii\base\ErrorException;
 
 use api\modules\v1\models\Borrower;
-// use yii\filters\auth\HttpBasicAuth;
-// use yii\filters\auth\HttpBearerAuth;
-use yii\filters\auth\QueryParamAuth;
+use yii\filters\auth\HttpBasicAuth;
+
 /**
  * Loan Controller API
  *
@@ -17,24 +16,20 @@ class LoanController extends ActiveController
 {       
 
 	    public $modelClass = 'api\modules\v1\models\Loan';
-
-
-
-	// 	public function behaviors()
-	// {  
-	// 	'formats' => [
- //                  'application/json' => Response::FORMAT_JSON,
- //              ],
-	// 	// $request = Yii::$app->request;
-	//  //   $behaviors = parent::behaviors();
- //  //       $behaviors['authenticator'] = [
- //  //           'class' => QueryParamAuth::className()   
- //  //       ]; 
- //  //       return $behaviors;
-	// }
-
-
+      
   
+   /*------ BASIC AUTHENTICATION --------*/
+		public function behaviors()
+	{  
+		
+		$request = Yii::$app->request;
+	   $behaviors = parent::behaviors();
+        $behaviors['authenticator'] = [
+            'class' => HttpBasicAuth::className()   
+        ]; 
+        return $behaviors;
+	}
+
 
 
     public function actionBorrower()

@@ -52,7 +52,7 @@ class SignupForm extends Model
         $user->email = $this->email;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-        
+        $user->access_token = $this->username;
         return $user->save() ? $user : null;
     }
 }

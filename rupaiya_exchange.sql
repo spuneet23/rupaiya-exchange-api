@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2017-02-19 20:57:23
+Date: 2017-02-21 00:11:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,7 @@ CREATE TABLE `borrowers` (
   `pan_card` varchar(255) DEFAULT NULL,
   `bank_account` int(25) DEFAULT NULL,
   PRIMARY KEY (`borrower_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of borrowers
@@ -96,15 +96,16 @@ CREATE TABLE `user` (
   `status` smallint(6) NOT NULL DEFAULT '10',
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
+  `access_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('3', 'spuneet233', 'JGCqYz4Yf8I7UffvzsawAW7pNVpYJgZi', '$2y$13$pqpzINI0B0Rx1idfR51WB.0mTUS98///6wkjnTMy0Gqmv/Q1YLQZm', null, 'spuneet23@gmail.com', '10', '1487505450', '1487505450');
-INSERT INTO `user` VALUES ('4', 'ajits731', 'A-8EGGOGh6BRZJk0WIMKkwWmQtAAhn-e', '$2y$13$mrbpb4O.f9ZPWz7q7GDoA.ycezYBtKc3ehQ/oYAGdCAGfQt56CIWS', null, 'ajits731@gmail.com', '10', '1487507054', '1487507054');
-INSERT INTO `user` VALUES ('5', 'ishant', 'YWppdHM3MzE6amFhdGJveXMzMA==', '$2y$13$VLKoNiYBsSWpWR3H0jwcsuWc.wVdWA4j674yFmpZARrHaaxKiosKe', null, 'ishantdhawale@gmail.com', '10', '1487510200', '1487510200');
+INSERT INTO `user` VALUES ('3', 'spuneet23', 'JGCqYz4Yf8I7UffvzsawAW7pNVpYJgZi', '$2y$13$pqpzINI0B0Rx1idfR51WB.0mTUS98///6wkjnTMy0Gqmv/Q1YLQZm', null, 'spuneet23@gmail.com', '10', '1487505450', '1487505450', 'spuneet23');
+INSERT INTO `user` VALUES ('6', 'ajits731', 'w-QAyja4r-jMARKHG0wwREHVs4c9ipk8', '$2y$13$GvE2KEl.GeKSZD0E65bfueZ2MEY0W1pDA6mr4xMa40.FE8hDERi/m', null, 'ajits731@gmail.com', '10', '1487614238', '1487614238', 'ajits731');
+INSERT INTO `user` VALUES ('7', 'ishant', 'D4NsqxT5wRoye47fxetd6GVLfLSKfeIa', '$2y$13$nluEeD6.pPdK3e1lRkI1Kuor8ejUOkxn2H7XoTNNE0B9XuGWAWZIa', null, 'ishantdhawale@gmail.com', '10', '1487615812', '1487615812', 'ishant');

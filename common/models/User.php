@@ -55,6 +55,17 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
     }
+    
+        public function beforeSave($insert)
+{
+    if (parent::beforeSave($insert)) {
+        if ($this->isNewRecord) {
+            $this->auth_key = Yii::$app->getSecurity()->generateRandomString();
+        }
+        return true;
+    }
+    return false;
+}
 
     /**
      * @inheritdoc
@@ -69,7 +80,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {   
-        return static::findOne(['auth_key' => $token]);
+        return static::findOne(['access_token' => $token]);
         // throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
         
     }
@@ -189,15 +200,6 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = null;
     }
 
-    public function beforeSave($insert)
-{
-    if (parent::beforeSave($insert)) {
-        if ($this->isNewRecord) {
-            $this->auth_key = Yii::$app->getSecurity()->generateRandomString();
-        }
-        return true;
-    }
-    return false;
-}
+
 
 }
